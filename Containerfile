@@ -1,6 +1,6 @@
 # This image provides a Python 3.8 environment you can use to run your Python
 # applications.
-FROM ubi8/s2i-base:rhel8.3
+FROM registry.access.redhat.com/ubi8/s2i-base:rhel8.3
 
 EXPOSE 8080
 
@@ -66,11 +66,10 @@ COPY ./root/ /
 #   under random UID.
 RUN \
     python3.8 -m venv ${APP_ROOT} && \
+    pip install virtualbmc && \
     chown -R 1001:0 ${APP_ROOT} && \
     fix-permissions ${APP_ROOT} -P && \
     rpm-file-permissions
-
-RUN pip install virtualbmc
 
 USER 1001
 
