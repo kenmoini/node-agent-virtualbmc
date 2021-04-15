@@ -19,5 +19,5 @@ sudo podman run --rm -it node-agent-virtualbmc:latest /bin/bash
 ## Example Adding of a Host
 
 ```bash
-(app-root) virshbmc --port 623 --connect qemu+ssh://username@192.168.122.1/system --domain vm-1
+(app-root) virshbmc --port 8623 --connect qemu+ssh://root@192.168.42.40/system --domain app-1
 ```
