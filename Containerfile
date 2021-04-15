@@ -67,6 +67,9 @@ COPY ./root/ /
 RUN \
     python3.8 -m venv ${APP_ROOT} && \
     pip install virtualbmc && \
+    systemctl daemon-reload && \
+    systemctl enable polkit && \
+    systemctl enable vbmcd && \
     chown -R 1001:0 ${APP_ROOT} && \
     fix-permissions ${APP_ROOT} -P && \
     rpm-file-permissions

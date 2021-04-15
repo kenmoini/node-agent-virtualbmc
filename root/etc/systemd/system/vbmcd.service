@@ -1,0 +1,25 @@
+[Install]
+WantedBy = multi-user.target
+
+[Service]
+BlockIOAccounting = True
+CPUAccounting = True
+ExecReload = /bin/kill -HUP $MAINPID
+ExecStart = /usr/local/bin/vbmcd --foreground
+MemoryAccounting = True
+PrivateDevices = False
+PrivateNetwork = False
+PrivateTmp = False
+PrivateUsers = False
+Restart = on-failure
+RestartSec = 2
+Slice = vbmc.slice
+TasksAccounting = True
+TimeoutSec = 120
+Type = simple
+
+[Unit]
+After = libvirtd.service
+After = syslog.target
+After = network.target
+Description = vbmc service
