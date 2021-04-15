@@ -44,7 +44,7 @@ LABEL summary="$SUMMARY" \
 
 RUN INSTALL_PKGS="python38 python38-devel python38-setuptools python38-pip nss_wrapper \
         httpd httpd-devel mod_ssl mod_auth_gssapi mod_ldap \
-        mod_session atlas-devel gcc-gfortran libffi-devel libvirt-devel libvirt-client libtool-ltdl enchant" && \
+        mod_session atlas-devel gcc-gfortran libffi-devel libvirt-devel libvirt-client polkit polkit-devel polkit-libs libtool-ltdl enchant" && \
     yum -y module enable python38:3.8 httpd:2.4 && \
     yum -y --setopt=tsflags=nodocs install $INSTALL_PKGS && \
     rpm -V $INSTALL_PKGS && \
@@ -74,4 +74,5 @@ RUN \
 USER 1001
 
 # Set the default CMD to print the usage of the language image.
-CMD $STI_SCRIPTS_PATH/usage
+#CMD $STI_SCRIPTS_PATH/usage
+CMD /sbin/init
